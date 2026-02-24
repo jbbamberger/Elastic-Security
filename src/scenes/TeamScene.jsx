@@ -48,12 +48,11 @@ function TeamScene() {
   }
 
   const memberCount = teamConfig.members.length
-  // Ultra-compact mode for 12+ members to fit on one screen
-  const isUltraCompact = memberCount > 12
+  const isLargeTeam = memberCount > 12
   const isCompact = memberCount > 6
 
   // Grid: 4 cols for 12+, 3 cols for 7-12, 2 cols for less
-  const gridCols = isUltraCompact
+  const gridCols = isLargeTeam
     ? 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4'
     : memberCount > 8
       ? 'md:grid-cols-3 lg:grid-cols-4'
@@ -62,18 +61,18 @@ function TeamScene() {
         : 'md:grid-cols-2'
 
   return (
-    <div className={`scene ${isUltraCompact ? '!pt-4 !pb-2' : ''}`}>
-      <div className={`${isCompact ? 'max-w-7xl' : 'max-w-5xl'} mx-auto w-full ${isUltraCompact ? 'px-4' : ''}`}>
+    <div className={`scene ${isLargeTeam ? '!pt-6 !pb-4' : ''}`}>
+      <div className="max-w-[1400px] mx-auto w-full px-6">
         {/* Header */}
         <motion.div
-          className={`text-center ${isUltraCompact ? 'mb-3' : isCompact ? 'mb-8' : 'mb-16'}`}
+          className={`text-center ${isLargeTeam ? 'mb-5' : isCompact ? 'mb-8' : 'mb-16'}`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <span className={`text-eyebrow ${isUltraCompact ? 'text-xs' : 'text-sm'} ${isDark ? 'text-elastic-teal' : 'text-elastic-blue'}`}>
+          <span className={`text-eyebrow text-sm ${isDark ? 'text-elastic-teal' : 'text-elastic-blue'}`}>
             Your Support
           </span>
-          <h2 className={`text-headline ${isUltraCompact ? 'text-2xl md:text-3xl' : isCompact ? 'text-4xl md:text-5xl' : 'text-5xl md:text-6xl'} font-extrabold mt-2 ${isDark ? 'text-white' : 'text-elastic-dark-ink'}`}>
+          <h2 className={`text-headline ${isLargeTeam ? 'text-3xl md:text-4xl' : isCompact ? 'text-4xl md:text-5xl' : 'text-5xl md:text-6xl'} font-extrabold mt-2 ${isDark ? 'text-white' : 'text-elastic-dark-ink'}`}>
             {teamConfig.title.includes('Elastic') ? (
               <>
                 {teamConfig.title.split('Elastic')[0]}
@@ -83,13 +82,13 @@ function TeamScene() {
               teamConfig.title
             )}
           </h2>
-          <p className={`text-paragraph ${isUltraCompact ? 'text-sm' : isCompact ? 'text-lg' : 'text-xl'} mt-2 max-w-2xl mx-auto ${isDark ? 'text-elastic-light-grey/80' : 'text-elastic-ink'}`}>
+          <p className={`text-paragraph ${isLargeTeam ? 'text-base' : isCompact ? 'text-lg' : 'text-xl'} mt-2 max-w-2xl mx-auto ${isDark ? 'text-elastic-light-grey/80' : 'text-elastic-ink'}`}>
             {teamConfig.subtitle}
           </p>
         </motion.div>
 
         {/* Team grid */}
-        <div className={`grid ${gridCols} ${isUltraCompact ? 'gap-2' : 'gap-4'}`}>
+        <div className={`grid ${gridCols} ${isLargeTeam ? 'gap-3' : 'gap-4'}`}>
           {teamConfig.members.map((member, index) => (
             <motion.div
               key={member.id}
@@ -101,7 +100,7 @@ function TeamScene() {
               onMouseLeave={() => setHoveredMember(null)}
             >
               <motion.div
-                className={`relative ${isUltraCompact ? 'p-2.5' : isCompact ? 'p-4' : 'p-6'} rounded-xl border overflow-hidden ${
+                className={`relative ${isLargeTeam ? 'p-3' : isCompact ? 'p-4' : 'p-6'} rounded-xl border overflow-hidden ${
                   isDark ? 'bg-white/[0.03] border-white/10' : 'bg-white/80 border-elastic-dev-blue/10'
                 }`}
                 whileHover={{ scale: 1.03, borderColor: isDark ? member.color : '#0B64DD' }}
@@ -117,7 +116,7 @@ function TeamScene() {
                   }}
                 />
 
-                <div className={`relative flex ${isUltraCompact ? 'flex-row items-center gap-2.5' : isCompact ? 'flex-col items-center text-center gap-3' : 'items-start gap-5'}`}>
+                <div className={`relative flex ${isLargeTeam ? 'flex-row items-center gap-3' : isCompact ? 'flex-col items-center text-center gap-3' : 'items-start gap-5'}`}>
                   {/* Avatar */}
                   <motion.div
                     className="relative flex-shrink-0"
@@ -129,13 +128,13 @@ function TeamScene() {
                       <img
                         src={member.photo}
                         alt={member.name}
-                        className={`${isUltraCompact ? 'w-10 h-10 rounded-lg' : isCompact ? 'w-16 h-16 rounded-2xl' : 'w-20 h-20 rounded-2xl'} object-cover`}
+                        className={`${isLargeTeam ? 'w-14 h-14 rounded-xl' : isCompact ? 'w-16 h-16 rounded-2xl' : 'w-20 h-20 rounded-2xl'} object-cover`}
                         style={{ border: `2px solid ${isDark ? member.color : '#0B64DD'}` }}
                         onError={() => handleImageError(member.id)}
                       />
                     ) : (
                       <div
-                        className={`${isUltraCompact ? 'w-10 h-10 text-sm rounded-lg' : isCompact ? 'w-16 h-16 text-xl rounded-2xl' : 'w-20 h-20 text-2xl rounded-2xl'} flex items-center justify-center font-bold`}
+                        className={`${isLargeTeam ? 'w-14 h-14 text-lg rounded-xl' : isCompact ? 'w-16 h-16 text-xl rounded-2xl' : 'w-20 h-20 text-2xl rounded-2xl'} flex items-center justify-center font-bold`}
                         style={{
                           backgroundColor: isDark ? `${member.color}20` : 'rgba(11, 100, 221, 0.1)',
                           color: isDark ? member.color : '#0B64DD',
@@ -145,8 +144,8 @@ function TeamScene() {
                       </div>
                     )}
 
-                    {/* Online indicator - hide in ultra compact */}
-                    {!isUltraCompact && (
+                    {/* Online indicator - hide in large team mode */}
+                    {!isLargeTeam && (
                       <motion.div
                         className={`absolute -bottom-1 -right-1 ${isCompact ? 'w-4 h-4' : 'w-5 h-5'} rounded-full border-2 border-elastic-dev-blue`}
                         style={{ backgroundColor: isDark ? member.color : '#0B64DD' }}
@@ -163,40 +162,26 @@ function TeamScene() {
                   </motion.div>
 
                   {/* Info */}
-                  <div className={`${isUltraCompact ? 'flex-1' : isCompact ? '' : 'flex-1'} min-w-0`}>
-                    <h3 className={`text-headline ${isUltraCompact ? 'text-xs' : isCompact ? 'text-base' : 'text-xl'} font-bold ${isUltraCompact ? 'mb-0' : 'mb-0.5'} ${isDark ? 'text-white' : 'text-elastic-dark-ink'}`}>
+                  <div className={`${isLargeTeam ? 'flex-1' : isCompact ? '' : 'flex-1'} min-w-0`}>
+                    <h3 className={`text-headline ${isLargeTeam ? 'text-sm' : isCompact ? 'text-base' : 'text-xl'} font-bold mb-0.5 ${isDark ? 'text-white' : 'text-elastic-dark-ink'}`}>
                       {member.name}
                     </h3>
-                    <p className={`text-paragraph ${isUltraCompact ? 'text-[10px] leading-tight mb-0.5' : 'text-xs mb-2'} ${isDark ? 'text-elastic-light-grey/70' : 'text-elastic-ink'}`}>
+                    <p className={`text-paragraph ${isLargeTeam ? 'text-xs leading-tight mb-1' : 'text-xs mb-2'} ${isDark ? 'text-elastic-light-grey/70' : 'text-elastic-ink'}`}>
                       {member.role}
                     </p>
 
-                    {/* Contact - hide email in ultra-compact, show on hover via tooltip */}
-                    {!isUltraCompact && (
-                      <button
-                        onClick={() => handleCopyEmail(member.email, member.id)}
-                        className={`flex items-center gap-1.5 text-xs transition-colors ${isCompact ? 'mx-auto' : ''} ${
-                          isDark ? 'text-white/60 hover:text-white' : 'text-elastic-dev-blue/60 hover:text-elastic-dev-blue'
-                        }`}
-                      >
-                        <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                        <span className="truncate">{copiedEmail === member.id ? 'Copied!' : member.email}</span>
-                      </button>
-                    )}
-
-                    {/* Ultra-compact: show email as tiny text */}
-                    {isUltraCompact && (
-                      <button
-                        onClick={() => handleCopyEmail(member.email, member.id)}
-                        className={`text-[9px] transition-colors truncate block max-w-full ${
-                          isDark ? 'text-white/40 hover:text-white/70' : 'text-elastic-dev-blue/40 hover:text-elastic-dev-blue/70'
-                        }`}
-                      >
-                        {copiedEmail === member.id ? 'Copied!' : member.email}
-                      </button>
-                    )}
+                    {/* Email */}
+                    <button
+                      onClick={() => handleCopyEmail(member.email, member.id)}
+                      className={`flex items-center gap-1.5 ${isLargeTeam ? 'text-[11px]' : 'text-xs'} transition-colors ${!isLargeTeam && isCompact ? 'mx-auto' : ''} ${
+                        isDark ? 'text-white/50 hover:text-white' : 'text-elastic-dev-blue/50 hover:text-elastic-dev-blue'
+                      }`}
+                    >
+                      <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                      <span className="truncate">{copiedEmail === member.id ? 'Copied!' : member.email}</span>
+                    </button>
 
                     {/* Phone - only in non-compact mode */}
                     {!isCompact && member.phone && (
@@ -217,7 +202,7 @@ function TeamScene() {
 
                 {/* Decorative corner */}
                 <div
-                  className={`absolute top-0 right-0 ${isUltraCompact ? 'w-10 h-10' : 'w-16 h-16'} opacity-10`}
+                  className="absolute top-0 right-0 w-12 h-12 opacity-10"
                   style={{
                     background: isDark
                       ? `linear-gradient(135deg, ${member.color}, transparent)`
