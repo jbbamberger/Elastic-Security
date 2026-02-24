@@ -100,7 +100,7 @@ function TeamScene() {
               onMouseLeave={() => setHoveredMember(null)}
             >
               <motion.div
-                className={`relative ${isLargeTeam ? 'p-3' : isCompact ? 'p-4' : 'p-6'} rounded-xl border overflow-hidden ${
+                className={`relative ${isLargeTeam ? 'p-3.5' : isCompact ? 'p-4' : 'p-6'} rounded-xl border overflow-hidden ${
                   isDark ? 'bg-white/[0.03] border-white/10' : 'bg-white/80 border-elastic-dev-blue/10'
                 }`}
                 whileHover={{ scale: 1.03, borderColor: isDark ? member.color : '#0B64DD' }}
@@ -116,7 +116,7 @@ function TeamScene() {
                   }}
                 />
 
-                <div className={`relative flex ${isLargeTeam ? 'flex-row items-center gap-3' : isCompact ? 'flex-col items-center text-center gap-3' : 'items-start gap-5'}`}>
+                <div className={`relative flex ${isLargeTeam ? 'flex-row items-center gap-3.5' : isCompact ? 'flex-col items-center text-center gap-3' : 'items-start gap-5'}`}>
                   {/* Avatar */}
                   <motion.div
                     className="relative flex-shrink-0"
@@ -128,13 +128,13 @@ function TeamScene() {
                       <img
                         src={member.photo}
                         alt={member.name}
-                        className={`${isLargeTeam ? 'w-14 h-14 rounded-xl' : isCompact ? 'w-16 h-16 rounded-2xl' : 'w-20 h-20 rounded-2xl'} object-cover`}
+                        className={`${isLargeTeam ? 'w-16 h-16 rounded-xl' : isCompact ? 'w-16 h-16 rounded-2xl' : 'w-20 h-20 rounded-2xl'} object-cover`}
                         style={{ border: `2px solid ${isDark ? member.color : '#0B64DD'}` }}
                         onError={() => handleImageError(member.id)}
                       />
                     ) : (
                       <div
-                        className={`${isLargeTeam ? 'w-14 h-14 text-lg rounded-xl' : isCompact ? 'w-16 h-16 text-xl rounded-2xl' : 'w-20 h-20 text-2xl rounded-2xl'} flex items-center justify-center font-bold`}
+                        className={`${isLargeTeam ? 'w-16 h-16 text-lg rounded-xl' : isCompact ? 'w-16 h-16 text-xl rounded-2xl' : 'w-20 h-20 text-2xl rounded-2xl'} flex items-center justify-center font-bold`}
                         style={{
                           backgroundColor: isDark ? `${member.color}20` : 'rgba(11, 100, 221, 0.1)',
                           color: isDark ? member.color : '#0B64DD',
@@ -163,17 +163,17 @@ function TeamScene() {
 
                   {/* Info */}
                   <div className={`${isLargeTeam ? 'flex-1' : isCompact ? '' : 'flex-1'} min-w-0`}>
-                    <h3 className={`text-headline ${isLargeTeam ? 'text-sm' : isCompact ? 'text-base' : 'text-xl'} font-bold mb-0.5 ${isDark ? 'text-white' : 'text-elastic-dark-ink'}`}>
+                    <h3 className={`text-headline ${isLargeTeam ? 'text-base' : isCompact ? 'text-base' : 'text-xl'} font-bold mb-0.5 ${isDark ? 'text-white' : 'text-elastic-dark-ink'}`}>
                       {member.name}
                     </h3>
-                    <p className={`text-paragraph ${isLargeTeam ? 'text-xs leading-tight mb-1' : 'text-xs mb-2'} ${isDark ? 'text-elastic-light-grey/70' : 'text-elastic-ink'}`}>
+                    <p className={`text-paragraph ${isLargeTeam ? 'text-xs leading-snug mb-1' : 'text-xs mb-2'} ${isDark ? 'text-elastic-light-grey/70' : 'text-elastic-ink'}`}>
                       {member.role}
                     </p>
 
                     {/* Email */}
                     <button
                       onClick={() => handleCopyEmail(member.email, member.id)}
-                      className={`flex items-center gap-1.5 ${isLargeTeam ? 'text-[11px]' : 'text-xs'} transition-colors ${!isLargeTeam && isCompact ? 'mx-auto' : ''} ${
+                      className={`flex items-center gap-1.5 text-xs transition-colors ${!isLargeTeam && isCompact ? 'mx-auto' : ''} ${
                         isDark ? 'text-white/50 hover:text-white' : 'text-elastic-dev-blue/50 hover:text-elastic-dev-blue'
                       }`}
                     >
