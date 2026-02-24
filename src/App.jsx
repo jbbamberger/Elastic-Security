@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { Analytics } from "@vercel/analytics/react"
 import { AnimatePresence, motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -130,20 +130,78 @@ function App() {
 
       if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
         e.preventDefault()
-        nextScene()
+        nextSceneWithPause()
       } else if (e.key === 'ArrowLeft' || e.key === 'Backspace') {
         e.preventDefault()
-        prevScene()
+        prevSceneWithPause()
       } else if (e.key >= '1' && e.key <= '9') {
-        navigateToScene(parseInt(e.key) - 1)
+        navigateToSceneWithPause(parseInt(e.key) - 1)
       } else if (e.key === '0') {
-        navigateToScene(9) // Scene 10
+        navigateToSceneWithPause(9) // Scene 10
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [nextScene, prevScene, navigateToScene])
+  }, [nextSceneWithPause, prevSceneWithPause, navigateToSceneWithPause])
+
+  // Auto-rotate between Team (0) and Panel (1) every 15 seconds
+  const AUTO_ROTATE_INTERVAL = 15000
+  const autoRotateTimer = useRef(null)
+  const [autoRotateEnabled, setAutoRotateEnabled] = useState(true)
+
+  useEffect(() => {
+    // Only auto-rotate when on scene 0 or 1 and auto-rotate is enabled
+    if (!autoRotateEnabled || currentScene > 1) {
+      if (autoRotateTimer.current) {
+        clearInterval(autoRotateTimer.current)
+        autoRotateTimer.current = null
+      }
+      return
+    }
+
+    autoRotateTimer.current = setInterval(() => {
+      setCurrentScene(prev => prev === 0 ? 1 : 0)
+    }, AUTO_ROTATE_INTERVAL)
+
+    return () => {
+      if (autoRotateTimer.current) {
+        clearInterval(autoRotateTimer.current)
+      }
+    }
+  }, [currentScene, autoRotateEnabled])
+
+  // Pause auto-rotate on any user interaction, resume after 30s of inactivity
+  const pauseTimer = useRef(null)
+  const handleUserInteraction = useCallback(() => {
+    if (pauseTimer.current) clearTimeout(pauseTimer.current)
+    setAutoRotateEnabled(false)
+    pauseTimer.current = setTimeout(() => {
+      setAutoRotateEnabled(true)
+    }, 30000) // Resume after 30s of no interaction
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      if (pauseTimer.current) clearTimeout(pauseTimer.current)
+    }
+  }, [])
+
+  // Wrap navigation functions to pause auto-rotate on manual nav
+  const navigateToSceneWithPause = useCallback((index) => {
+    handleUserInteraction()
+    navigateToScene(index)
+  }, [navigateToScene, handleUserInteraction])
+
+  const nextSceneWithPause = useCallback(() => {
+    handleUserInteraction()
+    nextScene()
+  }, [nextScene, handleUserInteraction])
+
+  const prevSceneWithPause = useCallback(() => {
+    handleUserInteraction()
+    prevScene()
+  }, [prevScene, handleUserInteraction])
 
   const CurrentSceneComponent = activeScenes[currentScene]?.component || activeScenes[0]?.component
 
@@ -183,12 +241,12 @@ function App() {
       <ProgressBar current={currentScene} total={activeScenes.length} />
 
       {/* Navigation */}
-      <Navigation 
-        scenes={activeScenes} 
-        currentScene={currentScene} 
-        onNavigate={navigateToScene}
-        onNext={nextScene}
-        onPrev={prevScene}
+      <Navigation
+        scenes={activeScenes}
+        currentScene={currentScene}
+        onNavigate={navigateToSceneWithPause}
+        onNext={nextSceneWithPause}
+        onPrev={prevSceneWithPause}
       />
 
       {/* Theme Toggle Button */}
@@ -228,7 +286,7 @@ function App() {
             className="absolute inset-0 overflow-y-auto"
           >
             <ErrorBoundary key={`error-${currentScene}`} onRetry={() => setCurrentScene(currentScene)}>
-              <CurrentSceneComponent onNext={nextScene} scenes={activeScenes} allScenes={orderedScenes} onNavigate={navigateToScene} />
+              <CurrentSceneComponent onNext={nextSceneWithPause} scenes={activeScenes} allScenes={orderedScenes} onNavigate={navigateToSceneWithPause} />
             </ErrorBoundary>
           </motion.div>
         </AnimatePresence>

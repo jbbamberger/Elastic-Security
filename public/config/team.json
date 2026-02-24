@@ -77,6 +77,24 @@
       "photo": "/photos/natalie-profile.jpeg"
     },
     {
+      "id": "sumav-earley",
+      "name": "Sumav Earley",
+      "role": "Director US Public Sector",
+      "email": "sumav.earley@elastic.co",
+      "color": "#FF957D",
+      "initials": "SE",
+      "photo": "/photos/sumav-profile.jpeg"
+    },
+    {
+      "id": "bobby-suber",
+      "name": "Bobby Suber",
+      "role": "Sr Manager Solutions Architecture",
+      "email": "bobby.suber@elastic.co",
+      "color": "#FEC514",
+      "initials": "BS",
+      "photo": "/photos/bobby-profile.jpeg"
+    },
+    {
       "id": "christian-tucker",
       "name": "Christian Tucker",
       "role": "Manager, Solutions Architecture",
@@ -102,6 +120,15 @@
       "color": "#FEC514",
       "initials": "SS",
       "photo": "/photos/shannon-profile.jpeg"
+    },
+    {
+      "id": "elizabeth-ceranowski",
+      "name": "Elizabeth Ceranowski",
+      "role": "Manager Regional Marketing - SLED",
+      "email": "elizabeth.ceranowski@elastic.co",
+      "color": "#F04E98",
+      "initials": "EC",
+      "photo": "/photos/elizabeth-profile.jpeg"
     },
     {
       "id": "jay-migliozzi",
