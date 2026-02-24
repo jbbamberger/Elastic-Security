@@ -14,6 +14,8 @@ import PlatformScene from './scenes/PlatformScene'
 import BusinessValueScene from './scenes/BusinessValueScene'
 import UnifiedStrategyScene from './scenes/UnifiedStrategyScene'
 import CrossClusterScene from './scenes/CrossClusterScene'
+import SecurityScene from './scenes/SecurityScene'
+import WholeOfStateScene from './scenes/WholeOfStateScene'
 import LicensingScene from './scenes/LicensingScene'
 import SchemaScene from './scenes/SchemaScene'
 import AccessControlScene from './scenes/AccessControlSceneDev'
@@ -42,6 +44,8 @@ const scenes = [
   { id: 'unified-strategy', component: UnifiedStrategyScene, title: 'Unified Strategy', description: 'Bringing it all together', duration: '5 min' },
   { id: 'platform', component: PlatformScene, title: 'Capabilities', description: 'Our solutions and capabilities', duration: '5 min' },
   { id: 'cross-cluster', component: CrossClusterScene, title: 'Cross-Cluster Search', description: 'Distributed search at global scale', duration: '3 min', hideFromAgenda: true },
+  { id: 'security', component: SecurityScene, title: 'Elastic Security', description: 'Attack Discovery & AI-driven response', duration: '5 min', hideFromAgenda: true },
+  { id: 'whole-of-state', component: WholeOfStateScene, title: 'Whole-of-State', description: 'Unified cyber defense for SLED', duration: '5 min', hideFromAgenda: true },
   { id: 'data-mesh', component: DataMeshScene, title: 'Data Mesh', description: 'Distributed data architecture', duration: '5 min', hideFromAgenda: true },
   { id: 'schema', component: SchemaScene, title: 'Elastic Common Schema', description: 'Schema on write advantage', duration: '5 min', hideFromAgenda: true },
   { id: 'access-control', component: AccessControlScene, title: 'Access Controls', description: 'Live data masking demo', duration: '3 min', hideFromAgenda: true },

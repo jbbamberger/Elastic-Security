@@ -70,11 +70,30 @@ export function useEnabledScenes(allScenes) {
     .filter(Boolean)
   
   // Add any new scenes not in the order (in case scenes were added)
+  const newSceneIds = []
   allScenes.forEach(scene => {
     if (!orderedScenes.find(s => s.id === scene.id)) {
-      orderedScenes.push(scene)
+      // Insert new scene after its predecessor in allScenes to preserve intended order
+      const allIndex = allScenes.indexOf(scene)
+      const prevScene = allIndex > 0 ? allScenes[allIndex - 1] : null
+      const insertAfter = prevScene ? orderedScenes.findIndex(s => s.id === prevScene.id) : -1
+      if (insertAfter >= 0) {
+        orderedScenes.splice(insertAfter + 1, 0, scene)
+      } else {
+        orderedScenes.push(scene)
+      }
+      newSceneIds.push(scene.id)
     }
   })
+
+  // Auto-enable newly discovered scenes
+  if (newSceneIds.length > 0) {
+    setConfig(prev => ({
+      ...prev,
+      enabledIds: [...prev.enabledIds, ...newSceneIds],
+      order: orderedScenes.map(s => s.id)
+    }))
+  }
 
   const enabledScenes = orderedScenes
     .filter(s => config.enabledIds.includes(s.id))
