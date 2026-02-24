@@ -66,17 +66,17 @@ function App() {
   const { theme, toggleTheme } = useTheme()
   const [currentScene, setCurrentScene] = useState(0)
   const [isReady, setIsReady] = useState(false)
-  
+
   // Scene filtering and ordering
-  const { 
-    enabledSceneIds, 
-    enabledScenes, 
+  const {
+    enabledSceneIds,
+    enabledScenes,
     orderedScenes,
     customDurations,
-    toggleScene, 
+    toggleScene,
     updateOrder,
     updateDuration,
-    resetToDefault 
+    resetToDefault
   } = useEnabledScenes(allScenes)
   const activeScenes = enabledScenes
 
@@ -92,6 +92,7 @@ function App() {
     }
   }, [activeScenes.length, currentScene])
 
+  // Base navigation callbacks
   const navigateToScene = useCallback((index) => {
     if (index >= 0 && index < activeScenes.length) {
       setCurrentScene(index)
@@ -110,6 +111,67 @@ function App() {
     }
   }, [currentScene])
 
+  // Auto-rotate between Team (0) and Panel (1) every 15 seconds
+  const AUTO_ROTATE_INTERVAL = 15000
+  const autoRotateTimer = useRef(null)
+  const [autoRotateEnabled, setAutoRotateEnabled] = useState(true)
+
+  // Pause auto-rotate on any user interaction, resume after 30s of inactivity
+  const pauseTimer = useRef(null)
+  const handleUserInteraction = useCallback(() => {
+    if (pauseTimer.current) clearTimeout(pauseTimer.current)
+    setAutoRotateEnabled(false)
+    pauseTimer.current = setTimeout(() => {
+      setAutoRotateEnabled(true)
+    }, 30000) // Resume after 30s of no interaction
+  }, [])
+
+  // Wrap navigation functions to pause auto-rotate on manual nav
+  const navigateToSceneWithPause = useCallback((index) => {
+    handleUserInteraction()
+    navigateToScene(index)
+  }, [navigateToScene, handleUserInteraction])
+
+  const nextSceneWithPause = useCallback(() => {
+    handleUserInteraction()
+    nextScene()
+  }, [nextScene, handleUserInteraction])
+
+  const prevSceneWithPause = useCallback(() => {
+    handleUserInteraction()
+    prevScene()
+  }, [prevScene, handleUserInteraction])
+
+  // Auto-rotate effect
+  useEffect(() => {
+    // Only auto-rotate when on scene 0 or 1 and auto-rotate is enabled
+    if (!autoRotateEnabled || currentScene > 1) {
+      if (autoRotateTimer.current) {
+        clearInterval(autoRotateTimer.current)
+        autoRotateTimer.current = null
+      }
+      return
+    }
+
+    autoRotateTimer.current = setInterval(() => {
+      setCurrentScene(prev => prev === 0 ? 1 : 0)
+    }, AUTO_ROTATE_INTERVAL)
+
+    return () => {
+      if (autoRotateTimer.current) {
+        clearInterval(autoRotateTimer.current)
+      }
+    }
+  }, [currentScene, autoRotateEnabled])
+
+  // Cleanup pause timer on unmount
+  useEffect(() => {
+    return () => {
+      if (pauseTimer.current) clearTimeout(pauseTimer.current)
+    }
+  }, [])
+
+  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
       // Ignore keyboard navigation when typing in input fields
@@ -119,7 +181,7 @@ function App() {
         activeElement.tagName === 'TEXTAREA' ||
         activeElement.isContentEditable
       )
-      
+
       if (isTyping) {
         // Only allow Escape to blur the input
         if (e.key === 'Escape') {
@@ -145,64 +207,6 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [nextSceneWithPause, prevSceneWithPause, navigateToSceneWithPause])
 
-  // Auto-rotate between Team (0) and Panel (1) every 15 seconds
-  const AUTO_ROTATE_INTERVAL = 15000
-  const autoRotateTimer = useRef(null)
-  const [autoRotateEnabled, setAutoRotateEnabled] = useState(true)
-
-  useEffect(() => {
-    // Only auto-rotate when on scene 0 or 1 and auto-rotate is enabled
-    if (!autoRotateEnabled || currentScene > 1) {
-      if (autoRotateTimer.current) {
-        clearInterval(autoRotateTimer.current)
-        autoRotateTimer.current = null
-      }
-      return
-    }
-
-    autoRotateTimer.current = setInterval(() => {
-      setCurrentScene(prev => prev === 0 ? 1 : 0)
-    }, AUTO_ROTATE_INTERVAL)
-
-    return () => {
-      if (autoRotateTimer.current) {
-        clearInterval(autoRotateTimer.current)
-      }
-    }
-  }, [currentScene, autoRotateEnabled])
-
-  // Pause auto-rotate on any user interaction, resume after 30s of inactivity
-  const pauseTimer = useRef(null)
-  const handleUserInteraction = useCallback(() => {
-    if (pauseTimer.current) clearTimeout(pauseTimer.current)
-    setAutoRotateEnabled(false)
-    pauseTimer.current = setTimeout(() => {
-      setAutoRotateEnabled(true)
-    }, 30000) // Resume after 30s of no interaction
-  }, [])
-
-  useEffect(() => {
-    return () => {
-      if (pauseTimer.current) clearTimeout(pauseTimer.current)
-    }
-  }, [])
-
-  // Wrap navigation functions to pause auto-rotate on manual nav
-  const navigateToSceneWithPause = useCallback((index) => {
-    handleUserInteraction()
-    navigateToScene(index)
-  }, [navigateToScene, handleUserInteraction])
-
-  const nextSceneWithPause = useCallback(() => {
-    handleUserInteraction()
-    nextScene()
-  }, [nextScene, handleUserInteraction])
-
-  const prevSceneWithPause = useCallback(() => {
-    handleUserInteraction()
-    prevScene()
-  }, [prevScene, handleUserInteraction])
-
   const CurrentSceneComponent = activeScenes[currentScene]?.component || activeScenes[0]?.component
 
   return (
@@ -211,21 +215,21 @@ function App() {
     }`}>
       {/* Background gradient orbs - Bold Minimalism */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
+        <motion.div
           className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] rounded-full blur-[120px]"
           animate={{
             backgroundColor: theme === 'dark' ? 'rgba(72, 239, 207, 0.08)' : 'rgba(11, 100, 221, 0.12)'
           }}
           transition={{ duration: 0.5 }}
         />
-        <motion.div 
+        <motion.div
           className="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] rounded-full blur-[100px]"
           animate={{
             backgroundColor: theme === 'dark' ? 'rgba(240, 78, 152, 0.08)' : 'rgba(240, 78, 152, 0.1)'
           }}
           transition={{ duration: 0.5 }}
         />
-        <motion.div 
+        <motion.div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[150px]"
           animate={{
             backgroundColor: theme === 'dark' ? 'rgba(11, 100, 221, 0.05)' : 'rgba(72, 239, 207, 0.08)'
@@ -253,8 +257,8 @@ function App() {
       <button
         onClick={toggleTheme}
         className={`fixed bottom-4 left-4 z-40 w-8 h-8 rounded-full flex items-center justify-center transition-all shadow-lg ${
-          theme === 'dark' 
-            ? 'bg-white/10 hover:bg-white/20 text-white/70 hover:text-white' 
+          theme === 'dark'
+            ? 'bg-white/10 hover:bg-white/20 text-white/70 hover:text-white'
             : 'bg-elastic-dev-blue/10 hover:bg-elastic-dev-blue/20 text-elastic-dev-blue/70 hover:text-elastic-dev-blue'
         }`}
         title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -263,7 +267,7 @@ function App() {
       </button>
 
       {/* Scene Settings */}
-      <SceneSettings 
+      <SceneSettings
         scenes={allScenes}
         enabledSceneIds={enabledSceneIds}
         orderedScenes={orderedScenes}
@@ -297,4 +301,3 @@ function App() {
 }
 
 export default App
-
