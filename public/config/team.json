@@ -12,6 +12,15 @@
       "photo": "/photos/chris-townsend-profile.jpeg"
     },
     {
+      "id": "jared-pane",
+      "name": "Jared Pane",
+      "role": "Senior Director Solutions Architecture",
+      "email": "jared.pane@elastic.co",
+      "color": "#F04E98",
+      "initials": "JP",
+      "photo": "/photos/jared-profile.jpeg"
+    },
+    {
       "id": "chris-reid",
       "name": "Chris Reid",
       "role": "Senior Strategic Business Development Director",

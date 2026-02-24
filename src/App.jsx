@@ -25,6 +25,7 @@ import WholeOfStateScene from './scenes/WholeOfStateScene'
 // import ServicesScene from './scenes/ServicesScene'
 // import DataMeshScene from './scenes/DataMeshScene'
 import TeamScene from './scenes/TeamScene'
+import PanelScene from './scenes/PanelScene'
 // import NextStepsScene from './scenes/NextStepsScene'
 import Navigation from './components/Navigation'
 import ProgressBar from './components/ProgressBar'
@@ -37,6 +38,7 @@ const scenes = [
   // { id: 'hero', component: HeroScene, title: 'Introduction', hideFromAgenda: true },
   // { id: 'agenda', component: AgendaScene, title: 'Agenda', hideFromAgenda: true },
   { id: 'team', component: TeamScene, title: 'Meet the Elastic Team', description: 'Who is at Billington Cybersecurity', duration: '2 min' },
+  { id: 'panel', component: PanelScene, title: 'Featured Panel', description: 'Infrastructure & Governing Security', duration: '1 min' },
   // { id: 'about-elastic', component: AboutElasticScene, title: 'About Elastic', description: 'Who we are and what we do', duration: '5 min' },
   // { id: 'business-value', component: BusinessValueScene, title: 'Desired Outcomes', description: 'What success looks like', duration: '10 min' },
   // { id: 'challenges', component: ChallengesScene, title: 'Problem Patterns', description: 'Common challenges we solve', duration: '10 min' },
