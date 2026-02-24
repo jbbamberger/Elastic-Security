@@ -5,27 +5,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from './context/ThemeContext'
 import ErrorBoundary from './components/ErrorBoundary'
-import HeroScene from './scenes/HeroScene'
-import AgendaScene from './scenes/AgendaScene'
-import AboutElasticScene from './scenes/AboutElasticScene'
-import DataExplosionScene from './scenes/DataExplosionScene'
-import ChallengesScene from './scenes/ChallengesScene'
-import PlatformScene from './scenes/PlatformScene'
-import BusinessValueScene from './scenes/BusinessValueScene'
-import UnifiedStrategyScene from './scenes/UnifiedStrategyScene'
-import CrossClusterScene from './scenes/CrossClusterScene'
+// import HeroScene from './scenes/HeroScene'
+// import AgendaScene from './scenes/AgendaScene'
+// import AboutElasticScene from './scenes/AboutElasticScene'
+// import DataExplosionScene from './scenes/DataExplosionScene'
+// import ChallengesScene from './scenes/ChallengesScene'
+// import PlatformScene from './scenes/PlatformScene'
+// import BusinessValueScene from './scenes/BusinessValueScene'
+// import UnifiedStrategyScene from './scenes/UnifiedStrategyScene'
+// import CrossClusterScene from './scenes/CrossClusterScene'
 import SecurityScene from './scenes/SecurityScene'
 import WholeOfStateScene from './scenes/WholeOfStateScene'
-import LicensingScene from './scenes/LicensingScene'
-import SchemaScene from './scenes/SchemaScene'
-import AccessControlScene from './scenes/AccessControlSceneDev'
-import ESQLScene from './scenes/ESQLScene'
-import ConsolidationScene from './scenes/ConsolidationScene'
-import DataTieringScene from './scenes/DataTieringScene'
-import ServicesScene from './scenes/ServicesScene'
-import DataMeshScene from './scenes/DataMeshScene'
+// import LicensingScene from './scenes/LicensingScene'
+// import SchemaScene from './scenes/SchemaScene'
+// import AccessControlScene from './scenes/AccessControlSceneDev'
+// import ESQLScene from './scenes/ESQLScene'
+// import ConsolidationScene from './scenes/ConsolidationScene'
+// import DataTieringScene from './scenes/DataTieringScene'
+// import ServicesScene from './scenes/ServicesScene'
+// import DataMeshScene from './scenes/DataMeshScene'
 import TeamScene from './scenes/TeamScene'
-import NextStepsScene from './scenes/NextStepsScene'
+// import NextStepsScene from './scenes/NextStepsScene'
 import Navigation from './components/Navigation'
 import ProgressBar from './components/ProgressBar'
 import SceneSettings, { useEnabledScenes } from './components/SceneSettings'
@@ -34,27 +34,27 @@ import SceneSettings, { useEnabledScenes } from './components/SceneSettings'
 // The agenda will automatically reflect the order defined here
 // Colors cycle through a palette based on position (Blue, Teal, Pink, Poppy, Yellow)
 const scenes = [
-  { id: 'hero', component: HeroScene, title: 'Introduction', hideFromAgenda: true },
-  { id: 'agenda', component: AgendaScene, title: 'Agenda', hideFromAgenda: true },
-  { id: 'team', component: TeamScene, title: 'Team Introductions', description: 'The people here to support you', duration: '2 min' },
-  { id: 'about-elastic', component: AboutElasticScene, title: 'About Elastic', description: 'Who we are and what we do', duration: '5 min' },
-  { id: 'business-value', component: BusinessValueScene, title: 'Desired Outcomes', description: 'What success looks like', duration: '10 min' },
-  { id: 'challenges', component: ChallengesScene, title: 'Problem Patterns', description: 'Common challenges we solve', duration: '10 min' },
-  { id: 'data-explosion', component: DataExplosionScene, title: 'The Data Challenge', description: 'Understanding the landscape', duration: '3 min' },
-  { id: 'unified-strategy', component: UnifiedStrategyScene, title: 'Unified Strategy', description: 'Bringing it all together', duration: '5 min' },
-  { id: 'platform', component: PlatformScene, title: 'Capabilities', description: 'Our solutions and capabilities', duration: '5 min' },
-  { id: 'cross-cluster', component: CrossClusterScene, title: 'Cross-Cluster Search', description: 'Distributed search at global scale', duration: '3 min', hideFromAgenda: true },
+  // { id: 'hero', component: HeroScene, title: 'Introduction', hideFromAgenda: true },
+  // { id: 'agenda', component: AgendaScene, title: 'Agenda', hideFromAgenda: true },
+  { id: 'team', component: TeamScene, title: 'Meet the Elastic Team', description: 'Who is at Billington Cybersecurity', duration: '2 min' },
+  // { id: 'about-elastic', component: AboutElasticScene, title: 'About Elastic', description: 'Who we are and what we do', duration: '5 min' },
+  // { id: 'business-value', component: BusinessValueScene, title: 'Desired Outcomes', description: 'What success looks like', duration: '10 min' },
+  // { id: 'challenges', component: ChallengesScene, title: 'Problem Patterns', description: 'Common challenges we solve', duration: '10 min' },
+  // { id: 'data-explosion', component: DataExplosionScene, title: 'The Data Challenge', description: 'Understanding the landscape', duration: '3 min' },
+  // { id: 'unified-strategy', component: UnifiedStrategyScene, title: 'Unified Strategy', description: 'Bringing it all together', duration: '5 min' },
+  // { id: 'platform', component: PlatformScene, title: 'Capabilities', description: 'Our solutions and capabilities', duration: '5 min' },
+  // { id: 'cross-cluster', component: CrossClusterScene, title: 'Cross-Cluster Search', description: 'Distributed search at global scale', duration: '3 min', hideFromAgenda: true },
   { id: 'security', component: SecurityScene, title: 'Elastic Security', description: 'Attack Discovery & AI-driven response', duration: '5 min', hideFromAgenda: true },
   { id: 'whole-of-state', component: WholeOfStateScene, title: 'Whole-of-State', description: 'Unified cyber defense for SLED', duration: '5 min', hideFromAgenda: true },
-  { id: 'data-mesh', component: DataMeshScene, title: 'Data Mesh', description: 'Distributed data architecture', duration: '5 min', hideFromAgenda: true },
-  { id: 'schema', component: SchemaScene, title: 'Elastic Common Schema', description: 'Schema on write advantage', duration: '5 min', hideFromAgenda: true },
-  { id: 'access-control', component: AccessControlScene, title: 'Access Controls', description: 'Live data masking demo', duration: '3 min', hideFromAgenda: true },
-  { id: 'esql', component: ESQLScene, title: 'ES|QL', description: 'Piped query language', duration: '3 min', hideFromAgenda: true },
-  { id: 'data-tiering', component: DataTieringScene, title: 'Data Tiering', description: 'Optimize spend with ILM', duration: '3 min', hideFromAgenda: true },
-  { id: 'licensing', component: LicensingScene, title: 'Licensing', description: 'One license, full power', duration: '3 min', hideFromAgenda: true },
-  { id: 'consolidation', component: ConsolidationScene, title: 'Consolidation', description: 'Reduce tool sprawl', duration: '3 min', hideFromAgenda: true },
-  { id: 'services', component: ServicesScene, title: 'Services & Support', description: 'Expert guidance at every stage', duration: '5 min', hideFromAgenda: true },
-  { id: 'next-steps', component: NextStepsScene, title: 'Next Steps', description: 'Your path forward'}, //, duration: '2 min' },
+  // { id: 'data-mesh', component: DataMeshScene, title: 'Data Mesh', description: 'Distributed data architecture', duration: '5 min', hideFromAgenda: true },
+  // { id: 'schema', component: SchemaScene, title: 'Elastic Common Schema', description: 'Schema on write advantage', duration: '5 min', hideFromAgenda: true },
+  // { id: 'access-control', component: AccessControlScene, title: 'Access Controls', description: 'Live data masking demo', duration: '3 min', hideFromAgenda: true },
+  // { id: 'esql', component: ESQLScene, title: 'ES|QL', description: 'Piped query language', duration: '3 min', hideFromAgenda: true },
+  // { id: 'data-tiering', component: DataTieringScene, title: 'Data Tiering', description: 'Optimize spend with ILM', duration: '3 min', hideFromAgenda: true },
+  // { id: 'licensing', component: LicensingScene, title: 'Licensing', description: 'One license, full power', duration: '3 min', hideFromAgenda: true },
+  // { id: 'consolidation', component: ConsolidationScene, title: 'Consolidation', description: 'Reduce tool sprawl', duration: '3 min', hideFromAgenda: true },
+  // { id: 'services', component: ServicesScene, title: 'Services & Support', description: 'Expert guidance at every stage', duration: '5 min', hideFromAgenda: true },
+  // { id: 'next-steps', component: NextStepsScene, title: 'Next Steps', description: 'Your path forward'}, //, duration: '2 min' },
 ]
 
 // All scenes for configuration

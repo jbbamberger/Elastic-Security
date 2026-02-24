@@ -1,47 +1,116 @@
 {
   "title": "Meet Your Elastic Team",
-  "subtitle": "Before we dive in—here's who you'll be working with today",
+  "subtitle": "Here's who is at Billington Cybersecurity",
   "members": [
     {
-      "id": "cat",
-      "name": "Cat Owens",
-      "role": "Senior Account Executive",
-      "email": "cat.owens@elastic.co",
-      "phone": "202.360.9384",
+      "id": "chris-reid",
+      "name": "Chris Reid",
+      "role": "Senior Strategic Business Development Director",
+      "email": "chris.reid@elastic.co",
+      "phone": "508.667.3682",
       "color": "#48EFCF",
-      "initials": "CO",
-      "photo": "/photos/cat-profile.jpeg"
+      "initials": "CR",
+      "photo": "/photos/chris-profile.jpeg"
     },
     {
-      "id": "daniel",
-      "name": "Daniel Barr",
-      "role": "Senior Solutions Architect",
-      "email": "daniel.barr@elastic.co",
-      "phone": "914.619.6230",
+      "id": "chris-townsend",
+      "name": "Chris Townsend",
+      "role": "GVP, Public Sector",
+      "email": "christopher.townsend@elastic.co",
       "color": "#0B64DD",
-      "initials": "DB",
-      "photo": "/photos/dan-profile.jpeg"
+      "initials": "CT",
+      "photo": "/photos/chris-townsend-profile.jpeg"
     },
     {
-      "id": "gene",
-      "name": "Gene Kent",
-      "role": "RVP Defense Industrial Base",
-      "email": "gene.kent@elastic.co",
-      "phone": "813.205.6097",
+      "id": "dave-stroth",
+      "name": "Dave Stroth",
+      "role": "Area Vice President",
+      "email": "dave.stroth@elastic.co",
       "color": "#F04E98",
-      "initials": "GK",
-      "photo": "/photos/gene-profile.jpeg"
+      "initials": "DS",
+      "photo": "/photos/dave-profile.jpeg"
     },
     {
-      "id": "matt",
-      "name": "Matt Wall",
-      "role": "Sr. Regional Service Provider",
-      "email": "matthew.wall@elastic.co",
-      "phone": "831.756.6386",
+      "id": "christian-tucker",
+      "name": "Christian Tucker",
+      "role": "Manager, Solutions Architecture",
+      "email": "christian.tucker@elastic.co",
       "color": "#FEC514",
-      "initials": "MW",
-      "photo": "/photos/matt-profile.jpeg"
+      "initials": "CT",
+      "photo": "/photos/christian-profile.jpeg"
+    },
+    {
+      "id": "darryl-peek",
+      "name": "Darryl Peek",
+      "role": "VP, Channels & Alliances Public Sector",
+      "email": "darryl.peek@elastic.co",
+      "phone": "301.300.4227",
+      "color": "#FF957D",
+      "initials": "DP",
+      "photo": "/photos/darryl-profile.jpeg"
+    },
+    {
+      "id": "david-tyner",
+      "name": "David Tyner",
+      "role": "Regional Vice President",
+      "email": "david.tyner@elastic.co",
+      "color": "#48EFCF",
+      "initials": "DT",
+      "photo": "/photos/david-tyner-profile.jpeg"
+    },
+    {
+      "id": "greg-deyoung",
+      "name": "Greg DeYoung",
+      "role": "Regional Vice President",
+      "email": "greg.deyoung@elastic.co",
+      "color": "#0B64DD",
+      "initials": "GD",
+      "photo": "/photos/greg-profile.jpeg"
+    },
+    {
+      "id": "jay-migliozzi",
+      "name": "Jay Migliozzi",
+      "role": "Public Sector Account Executive",
+      "email": "jay.migliozzi@elastic.co",
+      "color": "#F04E98",
+      "initials": "JM",
+      "photo": "/photos/jay-profile.jpeg"
+    },
+    {
+      "id": "james-bamberger",
+      "name": "James Bamberger",
+      "role": "Senior Solutions Architect",
+      "email": "james.bamberger@elastic.co",
+      "color": "#FEC514",
+      "initials": "JB",
+      "photo": "/photos/james-profile.jpeg"
+    },
+    {
+      "id": "natalie-ritchie",
+      "name": "Natalie Ritchie",
+      "role": "Regional Vice President",
+      "email": "natalie.ritchie@elastic.co",
+      "color": "#FF957D",
+      "initials": "NR",
+      "photo": "/photos/natalie-profile.jpeg"
+    },
+    {
+      "id": "john-harmon",
+      "name": "John Harmon",
+      "role": "RVP, Cyber Solutions US PUBSEC",
+      "email": "john.harmon@elastic.co",
+      "color": "#48EFCF",
+      "initials": "JH",
+      "photo": "/photos/john-profile.jpeg"
+    },
+    {
+      "id": "shannon-silverstein",
+      "name": "Shannon Silverstein",
+      "role": "Strategic Account Manager",
+      "email": "shannon.silverstein@elastic.co",
+      "color": "#0B64DD",
+      "initials": "SS",
+      "photo": "/photos/shannon-profile.jpeg"
     }
   ]
 }
-

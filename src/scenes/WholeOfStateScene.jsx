@@ -608,9 +608,9 @@ function WholeOfStateScene({ onNavigate, scenes }) {
                         className={`absolute bottom-[3%] left-1/2 flex items-center gap-8 px-6 py-3 rounded-2xl border ${
                           isDark ? 'bg-elastic-dev-blue/95 border-elastic-teal/30' : 'bg-white/95 border-elastic-blue/20'
                         }`}
-                        style={{ transform: 'translateX(-50%)', zIndex: 10 }}
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        style={{ zIndex: 10 }}
+                        initial={{ opacity: 0, y: 15, x: '-50%' }}
+                        animate={{ opacity: 1, y: 0, x: '-50%' }}
                         exit={{ opacity: 0 }}
                       >
                         {[
@@ -633,9 +633,9 @@ function WholeOfStateScene({ onNavigate, scenes }) {
                     {solutionPhase === 'roles' && (
                       <motion.div
                         className="absolute bottom-[3%] left-1/2 flex items-center gap-4"
-                        style={{ transform: 'translateX(-50%)', zIndex: 10 }}
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        style={{ zIndex: 10 }}
+                        initial={{ opacity: 0, y: 15, x: '-50%' }}
+                        animate={{ opacity: 1, y: 0, x: '-50%' }}
                         exit={{ opacity: 0 }}
                       >
                         <div className={`text-[10px] font-semibold uppercase tracking-wider ${isDark ? 'text-white/40' : 'text-elastic-dev-blue/40'}`}>
@@ -695,8 +695,8 @@ function WholeOfStateScene({ onNavigate, scenes }) {
                   {/* Mini SOC hub */}
                   <motion.div
                     className="absolute left-1/2 top-[1%]"
-                    style={{ transform: 'translateX(-50%)', zIndex: 5 }}
-                    initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}
+                    style={{ zIndex: 5 }}
+                    initial={{ opacity: 0, scale: 0.8, x: '-50%' }} animate={{ opacity: 1, scale: 1, x: '-50%' }}
                   >
                     <div className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border-2 ${isDark ? 'bg-elastic-dev-blue' : 'bg-white'}`}
                       style={{ borderColor: isDark ? 'rgba(72,239,207,0.4)' : 'rgba(11,100,221,0.4)' }}
@@ -763,8 +763,8 @@ function WholeOfStateScene({ onNavigate, scenes }) {
                         className={`absolute bottom-2 left-1/2 flex items-center gap-2 px-3 py-2 rounded-xl border ${
                           isDark ? 'bg-elastic-dev-blue/95 border-elastic-teal/20' : 'bg-white/95 border-elastic-blue/15'
                         }`}
-                        style={{ transform: 'translateX(-50%)', zIndex: 10 }}
-                        initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+                        style={{ zIndex: 10 }}
+                        initial={{ opacity: 0, y: 10, x: '-50%' }} animate={{ opacity: 1, y: 0, x: '-50%' }}
                       >
                         <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 2, repeat: Infinity }}>
                           <FontAwesomeIcon icon={faLock} className={`text-sm ${isDark ? 'text-elastic-teal' : 'text-elastic-blue'}`} />
