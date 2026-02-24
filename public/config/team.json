@@ -1,25 +1,25 @@
 {
   "title": "Meet Your Elastic Team",
-  "subtitle": "Here's who is at Billington Cybersecurity",
+  "subtitle": "Your dedicated team at the Billington Cybersecurity Summit",
   "members": [
+    {
+      "id": "chris-townsend",
+      "name": "Chris Townsend",
+      "role": "GVP, Public Sector",
+      "email": "christopher.townsend@elastic.co",
+      "color": "#48EFCF",
+      "initials": "CT",
+      "photo": "/photos/chris-townsend-profile.jpeg"
+    },
     {
       "id": "chris-reid",
       "name": "Chris Reid",
       "role": "Senior Strategic Business Development Director",
       "email": "chris.reid@elastic.co",
       "phone": "508.667.3682",
-      "color": "#48EFCF",
+      "color": "#0B64DD",
       "initials": "CR",
       "photo": "/photos/chris-profile.jpeg"
-    },
-    {
-      "id": "chris-townsend",
-      "name": "Chris Townsend",
-      "role": "GVP, Public Sector",
-      "email": "christopher.townsend@elastic.co",
-      "color": "#0B64DD",
-      "initials": "CT",
-      "photo": "/photos/chris-townsend-profile.jpeg"
     },
     {
       "id": "dave-stroth",
@@ -31,21 +31,12 @@
       "photo": "/photos/dave-profile.jpeg"
     },
     {
-      "id": "christian-tucker",
-      "name": "Christian Tucker",
-      "role": "Manager, Solutions Architecture",
-      "email": "christian.tucker@elastic.co",
-      "color": "#FEC514",
-      "initials": "CT",
-      "photo": "/photos/christian-profile.jpeg"
-    },
-    {
       "id": "darryl-peek",
       "name": "Darryl Peek",
       "role": "VP, Channels & Alliances Public Sector",
       "email": "darryl.peek@elastic.co",
       "phone": "301.300.4227",
-      "color": "#FF957D",
+      "color": "#FEC514",
       "initials": "DP",
       "photo": "/photos/darryl-profile.jpeg"
     },
@@ -54,7 +45,7 @@
       "name": "David Tyner",
       "role": "Regional Vice President",
       "email": "david.tyner@elastic.co",
-      "color": "#48EFCF",
+      "color": "#FF957D",
       "initials": "DT",
       "photo": "/photos/david-tyner-profile.jpeg"
     },
@@ -63,43 +54,34 @@
       "name": "Greg DeYoung",
       "role": "Regional Vice President",
       "email": "greg.deyoung@elastic.co",
-      "color": "#0B64DD",
+      "color": "#48EFCF",
       "initials": "GD",
       "photo": "/photos/greg-profile.jpeg"
-    },
-    {
-      "id": "jay-migliozzi",
-      "name": "Jay Migliozzi",
-      "role": "Public Sector Account Executive",
-      "email": "jay.migliozzi@elastic.co",
-      "color": "#F04E98",
-      "initials": "JM",
-      "photo": "/photos/jay-profile.jpeg"
-    },
-    {
-      "id": "james-bamberger",
-      "name": "James Bamberger",
-      "role": "Senior Solutions Architect",
-      "email": "james.bamberger@elastic.co",
-      "color": "#FEC514",
-      "initials": "JB",
-      "photo": "/photos/james-profile.jpeg"
     },
     {
       "id": "natalie-ritchie",
       "name": "Natalie Ritchie",
       "role": "Regional Vice President",
       "email": "natalie.ritchie@elastic.co",
-      "color": "#FF957D",
+      "color": "#48EFCF",
       "initials": "NR",
       "photo": "/photos/natalie-profile.jpeg"
+    },
+    {
+      "id": "christian-tucker",
+      "name": "Christian Tucker",
+      "role": "Manager, Solutions Architecture",
+      "email": "christian.tucker@elastic.co",
+      "color": "#0B64DD",
+      "initials": "CT",
+      "photo": "/photos/christian-profile.jpeg"
     },
     {
       "id": "john-harmon",
       "name": "John Harmon",
       "role": "RVP, Cyber Solutions US PUBSEC",
       "email": "john.harmon@elastic.co",
-      "color": "#48EFCF",
+      "color": "#F04E98",
       "initials": "JH",
       "photo": "/photos/john-profile.jpeg"
     },
@@ -108,9 +90,27 @@
       "name": "Shannon Silverstein",
       "role": "Strategic Account Manager",
       "email": "shannon.silverstein@elastic.co",
-      "color": "#0B64DD",
+      "color": "#FEC514",
       "initials": "SS",
       "photo": "/photos/shannon-profile.jpeg"
+    },
+    {
+      "id": "jay-migliozzi",
+      "name": "Jay Migliozzi",
+      "role": "Public Sector Account Executive",
+      "email": "jay.migliozzi@elastic.co",
+      "color": "#FF957D",
+      "initials": "JM",
+      "photo": "/photos/jay-profile.jpeg"
+    },
+    {
+      "id": "james-bamberger",
+      "name": "James Bamberger",
+      "role": "Senior Solutions Architect",
+      "email": "james.bamberger@elastic.co",
+      "color": "#48EFCF",
+      "initials": "JB",
+      "photo": "/photos/james-profile.jpeg"
     }
   ]
 }
