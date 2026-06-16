@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from './context/ThemeContext'
 import ErrorBoundary from './components/ErrorBoundary'
-// import HeroScene from './scenes/HeroScene'
+import HeroScene from './scenes/HeroScene'
 // import AgendaScene from './scenes/AgendaScene'
 // import AboutElasticScene from './scenes/AboutElasticScene'
 // import DataExplosionScene from './scenes/DataExplosionScene'
@@ -35,10 +35,10 @@ import SceneSettings, { useEnabledScenes } from './components/SceneSettings'
 // The agenda will automatically reflect the order defined here
 // Colors cycle through a palette based on position (Blue, Teal, Pink, Poppy, Yellow)
 const scenes = [
-  // { id: 'hero', component: HeroScene, title: 'Introduction', hideFromAgenda: true },
+  { id: 'hero', component: HeroScene, title: 'Introduction', hideFromAgenda: true },
   // { id: 'agenda', component: AgendaScene, title: 'Agenda', hideFromAgenda: true },
-  { id: 'team', component: TeamScene, title: 'Meet the Elastic Team', description: 'Who is at Billington Cybersecurity', duration: '2 min' },
-  { id: 'panel', component: PanelScene, title: 'Featured Panel', description: 'Infrastructure & Governing Security', duration: '1 min' },
+  // { id: 'team', component: TeamScene, title: 'Meet the Elastic Team', description: 'Who is at Billington Cybersecurity', duration: '2 min' },
+  // { id: 'panel', component: PanelScene, title: 'Featured Panel', description: 'Infrastructure & Governing Security', duration: '1 min' },
   // { id: 'about-elastic', component: AboutElasticScene, title: 'About Elastic', description: 'Who we are and what we do', duration: '5 min' },
   // { id: 'business-value', component: BusinessValueScene, title: 'Desired Outcomes', description: 'What success looks like', duration: '10 min' },
   // { id: 'challenges', component: ChallengesScene, title: 'Problem Patterns', description: 'Common challenges we solve', duration: '10 min' },

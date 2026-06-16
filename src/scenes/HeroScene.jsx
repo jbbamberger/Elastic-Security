@@ -74,7 +74,7 @@ function HeroScene() {
   const [showAnswer, setShowAnswer] = useState(false)
 
   // The question to type
-  const questionText = "The Elastic Search AI Platform"
+  const questionText = "Elastic for Maryland Digital Government"
 
   // Memoize particles to prevent re-randomizing on re-render
   const particles = useMemo(() => 
@@ -228,6 +228,22 @@ function HeroScene() {
                 />
               </motion.div>
 
+              {/* Event badge */}
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="mb-6"
+              >
+                <span className={`inline-block px-5 py-2 rounded-full text-sm font-semibold tracking-wide uppercase ${
+                  isDark
+                    ? 'bg-elastic-teal/20 text-elastic-teal border border-elastic-teal/30'
+                    : 'bg-elastic-blue/10 text-elastic-blue border border-elastic-blue/20'
+                }`}>
+                  Maryland Digital Government Summit
+                </span>
+              </motion.div>
+
               {/* Main title */}
               <motion.h1
                 className="text-headline text-5xl md:text-7xl font-extrabold mb-6"
@@ -237,13 +253,13 @@ function HeroScene() {
               >
                 <span className={isDark ? 'text-white' : 'text-elastic-dark-ink'}>The Elastic Search AI Platform:</span>
                 <br />
-                <motion.span 
+                <motion.span
                   className="gradient-text"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6 }}
                 >
-                  Transforming Data into Action
+                  Powering Maryland's Digital Future
                 </motion.span>
               </motion.h1>
 
@@ -256,7 +272,7 @@ function HeroScene() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
               >
-                Unleash the Power of Real-Time Insights, Scale, and Innovation
+                Search, Security &amp; Observability for Maryland State Agencies
               </motion.p>
             </motion.div>
           )}
